@@ -18,6 +18,7 @@ phases:
   post_build:
     commands:
       - ls 
+      - mkdir build
       - CurrentVersion=$(echo $(aws lambda get-alias --function-name arn:aws-cn:lambda:cn-north-1:287439122014:function:test --name beta --region cn-north-1 | grep FunctionVersion | tail -1 |tr -cd "[0-9]"))
       - zip -r ./build/lambda.zip ./lambda_function.py
       - aws lambda update-function-code --function-name arn:aws-cn:lambda:cn-north-1:287439122014:function:test --zip-file fileb://build/lambda.zip  --region cn-north-1 --publish
