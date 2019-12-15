@@ -222,7 +222,7 @@ buildspec 保持默认值： **使用 buildspec 文件** ，以及名称留空�
 
 [comment]: <> (新建一Jenkins个项目，点击“Create a new project” -- "freestyle project" img/new-item.png)
 
-[comment]: <>( 配置Github项目的地址，源代码管理选择Git方式。img/source-github.png 触发构建，选择 Github hook trigger for GITScm polling )
+[comment]: <> (配置Github项目的地址，源代码管理选择Git方式。img/source-github.png 触发构建，选择 Github hook trigger for GITScm polling )
 
 修改构建步骤为新增 codebuild 步骤    
 ![](img/add-codebuild-step.png)
