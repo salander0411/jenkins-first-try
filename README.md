@@ -163,7 +163,7 @@ aws deploy create-deployment \
 
 ### 步骤四：测试效果
 
-提交代码更新到github，此时 codedeploy 会自动被触发， 请按下方分别查看 Jenkins 以及 codedeploy 的日志。
+在本地修改代码，通过``git commit``, ``git push`` 提交代码更新到 github repo 中，此时 codedeploy 会自动被触发， 请按下方分别查看 Jenkins 以及 codedeploy 的日志。
 
 ![](img/jenkins-build-history.png)
 
@@ -217,17 +217,17 @@ buildspec 保持默认值： **使用 buildspec 文件** ，以及名称留空�
 配置Github项目的地址，源代码管理选择Git方式。
 ![](img/source-github.png)
 
-触发构建，选择 Github hook trigger for GITScm polling
+触发构建，选择 Github hook trigger for GITScm polling    
 ![](img/add-trigger.png)
 
-添加构建步骤，新增 codebuild 步骤
+添加构建步骤，新增 codebuild 步骤    
 ![](img/add-codebuild-step.png)
 
-配置 AKSK , region, project-name，其他 project source details 因为我们已经在 codebuild 当中配置过，不用填写 override 值。
+配置 AKSK , region, project-name，其他 project source details 因为我们已经在 codebuild 当中配置过，不用填写 override 值。   
 ![](img/codebuild-configuration.png)
 
 ### 步骤四：测试效果
-除了可以查看 jenkins 以及 codedeploy 的日志外，有关于构建过程，我们可以在 codebuild 中查看日志。
+再次在提交代码到 github 当中，观察 Jenkins build 的触发。除了可以查看 jenkins 以及 codedeploy 的日志外，有关于构建过程，我们可以在 codebuild 中查看日志。
 
 ![](img/codebuild-history.png)
 
