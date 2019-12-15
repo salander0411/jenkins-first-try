@@ -190,11 +190,10 @@ aws deploy create-deployment \
 ## 实验二： Jenkins 利用 CodeBuild 以及 CodeDeploy 来实现 lambda 的自动更新
 在实验一的基础上，我们会将 shell 的 build 步骤替换为用 CodeBuild 来实现。
 
-### 步骤一：新增 lambda 文件
-在原 lambda 函数的基础上，添加 [buildspec.yml](buildspec.yml) 文件，用于 codebuild 配置文件。
+### 步骤一：新增文件
+在Github 源代码 repo 原文件的基础上，添加 [buildspec.yml](buildspec.yml) 文件，**修改替换文件中尖括号标注部分**（去掉尖括号）。修改完成后，``git push`` 到代码库下。
 
-查看buildspec.yml 文件，我们可以看到里面有 codedeploy 的操作，操作对象为刚才在实验一当中配置的 codedeploy。
-**修改替换文件中尖括号标注部分**（去掉尖括号）。
+此文件用于 codebuild 配置文件。
 
 ### 步骤二：配置 CodeBuild
 点击跳转至 [CodeBuild 控制台](https://console.amazonaws.cn/codesuite/codebuild/projects?region=cn-north-1)，点击 **create build project** （创建构建项目）。
@@ -221,16 +220,11 @@ buildspec 保持默认值： **使用 buildspec 文件** ，以及名称留空�
 在可选插件里，选择 **AWS CodeBuild Plugin** 
 ![](img/jenkins-codebuild-plugin.png)
 
-新建一Jenkins个项目，点击“Create a new project” -- "freestyle project"
-![](img/new-item.png)
+[comment]: <> (新建一Jenkins个项目，点击“Create a new project” -- "freestyle project" img/new-item.png)
 
-配置Github项目的地址，源代码管理选择Git方式。
-![](img/source-github.png)
+[comment]: <>( 配置Github项目的地址，源代码管理选择Git方式。img/source-github.png 触发构建，选择 Github hook trigger for GITScm polling )
 
-触发构建，选择 Github hook trigger for GITScm polling    
-![](img/add-trigger.png)
-
-添加构建步骤，新增 codebuild 步骤    
+修改构建步骤为新增 codebuild 步骤    
 ![](img/add-codebuild-step.png)
 
 配置 AKSK , region, project-name，其他 project source details 因为我们已经在 codebuild 当中配置过，不用填写 override 值。   
