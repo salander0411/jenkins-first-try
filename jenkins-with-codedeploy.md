@@ -26,7 +26,6 @@
    登录到 EC2 实例中，执行以下命令
    
    ```
-   # sudo su jenkins
    # 如果使用 Amazon linux 系统，AWSCLI 已经自动安装；如果没有，则需要运行下列命令手动安装 AWSCLI
    #  pip install awscli
    aws configure 

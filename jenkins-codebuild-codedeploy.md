@@ -1,4 +1,4 @@
-# 在中国区配合 Jenkins 和 CodeDeploy 实现 Lambda 的自动化发布与部署
+# 在中国区配合 Jenkins 和 CodeBuild，codeDeploy 实现 Lambda 的自动化发布与部署
 
 本文使用 Jenkins 结合 CodeBuild, CodeDeploy 实现 Serverless 的 CI/CD 工作流，用于自动化发布已经部署 lambda 函数。
 在 AWS 海外区，CI/CD 工作流可以用 codepipeline 这项产品来方便的实现，由于中国区暂时未发布此款产品，此文采用 [Jenkins](https://jenkins.io/zh/) 做替代方案管理 CICD 工作流。
@@ -25,7 +25,6 @@
 0. 配置权限 
    登录到 EC2 实例中，执行以下命令。
    ```
-   # sudo su jenkins
    # 如果使用 Amazon linux 系统，AWSCLI 已经自动安装；如果没有，则需要运行下列命令手动安装 AWSCLI
    #  pip install awscli
    aws configure 
