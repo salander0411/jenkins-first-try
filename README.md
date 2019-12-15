@@ -54,47 +54,47 @@
    ```   
    
 1. 登录 Jenkins   
-   在浏览器输入输入EC2的公网IP地址（如果想保持此实例 ip 固定，请提前绑定一个 [弹性EIP](https://docs.aws.amazon.com/zh_cn/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) 固定 ip），比如3.213.113.xx:8080，然后出现如下界面，输入上面得到的 Jeknins 默认密码。
+   在浏览器输入输入EC2的公网IP地址（如果想保持此实例 ip 固定，请提前绑定一个 [弹性EIP](https://docs.aws.amazon.com/zh_cn/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) 固定 ip），比如3.213.113.xx:8080，然后出现如下界面，输入上面得到的 Jeknins 默认密码。   
    ![](img/jenkins-initial.png)
 
-   选择 **安装推荐插件**
+   选择 **安装推荐插件**    
    ![](img/get-started.png)
 
-   配置用户
+   配置用户     
    ![](img/create-username.png)
 
-   Jenkins setup 完成。
+   Jenkins setup 完成    
    ![](img/jenkins-address.png)
    
    ![](img/jenkins-ready.png)
 
 1. 为 Github 添加 Webhooks
 
-   进入自己的 Github 地址，在 setting - developer setting 当中，新生成一个 GitHub token，用于 Jenkins 访问 GitHub。记录下生成的token字符串，比如： bf6adc27311a39ad0b5c9a63xxxxxxxxxxxxxx 用于后续配置。
+   进入自己的 Github 地址，在 setting - developer setting 当中，新生成一个 GitHub token，用于 Jenkins 访问 GitHub。记录下生成的token字符串，比如： bf6adc27311a39ad0b5c9a63xxxxxxxxxxxxxx 用于后续配置。   
    ![](img/generate-token.png)
 
-   Payload URL设置Jenkins Server的地址（如 3.213.113.xx:8080） 。
+   Payload URL设置Jenkins Server的地址（如 3.213.113.xx:8080）。   
 
-   创建或者选择一个 public repository，用于放置用于后续 lambda 函数部署的源码，点击 Settings 配置 webhooks，使得此 repo 可以后续自动触发 Jenkins的 CICD 流程
+   创建或者选择一个 public repository，用于放置用于后续 lambda 函数部署的源码，点击 Settings 配置 webhooks，使得此 repo 可以后续自动触发 Jenkins的 CICD 流程    
    ![](img/settings-webhook.png)
 
    右侧点击 **add webhook**
    
-   在Payload URL，输入 ```http://EC2公网IP地址/github-wekhook/``` 
+   在Payload URL，输入 ```http://EC2公网IP地址/github-wekhook/```    
    ![](img/webhook.png)
 
 1. Jenkins 配置
 
-   进入系统配置
-   ![](img/configure-system.png)
+   进入系统配置      
+   ![](img/configure-system.png)   
 
-   添加权限
+   添加权限     
    ![](img/add-credentials.png)
 
-   选择类型为 **secret text**， 输入刚才从 Github 生成的 Access Token，点击“添加”。
+   选择类型为 **secret text**， 输入刚才从 Github 生成的 Access Token，点击“添加”。     
    ![](img/add-access-token.png)
 
-   点击 **test connection** 测试链接，没有报错说明配置成功。
+   点击 **test connection** 测试链接，没有报错说明配置成功。     
    ![](img/test-connection.png)
 
 
@@ -115,13 +115,13 @@ publish 此 lambda，版本为1，并且创建别名（alias）。
 
 先创建一个角色(role) 供 codedeploy 使用，使 codedeploy 有更新 lambda 的权限。
 
-新建一个 codeDeploy 应用，选择 lambda 平台，命名为如 ``first-try-with-jenkins``
+新建一个 codeDeploy 应用，选择 lambda 平台，命名为如 ``first-try-with-jenkins``    
 ![](img/create-deploy-application.png)
 
-点击刚刚创建的应用，新建一个 deployment group，同样命名为``first-try-with-jenkins``.
+点击刚刚创建的应用，新建一个 deployment group，同样命名为``first-try-with-jenkins``.    
 ![](img/create-deployment-group.png)
 
-service role 选择刚才创建的 codedeploy 的 role。部署策略，此文以 all at once（全部切换）为例，也可以根据需要选择其他的线性或者金丝雀的部署策略。
+service role 选择刚才创建的 codedeploy 的 role。部署策略，此文以 all at once（全部切换）为例，也可以根据需要选择其他的线性或者金丝雀的部署策略。   
 ![](img/deployment-policy.png)
 
 下一步我们创建一个 Jenkin 的项目，配置 codedeploy 相应信息。

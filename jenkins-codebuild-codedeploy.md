@@ -140,19 +140,19 @@ service role 选择刚才创建的 codedeploy 的 role。部署策略，此文�
 
 ### 步骤五：新建 Jenkins 项目
 
-新建项目之前，先安装 codebuild 的插件。点击 **系统管理** -- **插件管理(plugin)**
+新建项目之前，先安装 codebuild 的插件。点击 **系统管理** -- **插件管理(plugin)**   
 ![](img/jenkins-plugin.png)
 
-在可选插件里，选择 **AWS CodeBuild Plugin** 
+在可选插件里，选择 **AWS CodeBuild Plugin**    
 ![](img/jenkins-codebuild-plugin.png)
 
-新建一Jenkins个项目，点击“Create a new project” -- "freestyle project"
+新建一Jenkins个项目，点击“Create a new project” -- "freestyle project"   
 ![](img/new-item.png)
 
-配置Github项目的地址，源代码管理选择Git方式。
+配置Github项目的地址，源代码管理选择Git方式。   
 ![](img/source-github.png)
 
-触发构建，选择 Github hook trigger for GITScm polling
+触发构建，选择 Github hook trigger for GITScm polling   
 ![](img/add-trigger.png)
 
 添加构建步骤，新增 codebuild 步骤

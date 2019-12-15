@@ -55,13 +55,13 @@
    在浏览器输入输入EC2的公网IP地址（如果想保持此实例 ip 固定，请提前绑定一个 [弹性EIP](https://docs.aws.amazon.com/zh_cn/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) 固定 ip），比如3.213.113.xx:8080，然后出现如下界面，输入上面得到的 Jeknins 默认密码。
    ![](img/jenkins-initial.png)
 
-   选择 **安装推荐插件**
+   选择 **安装推荐插件**   
    ![](img/get-started.png)
 
-   配置用户
+   配置用户   
    ![](img/create-username.png)
 
-   Jenkins setup 完成。
+   Jenkins setup 完成。   
    ![](img/jenkins-address.png)
    
    ![](img/jenkins-ready.png)
