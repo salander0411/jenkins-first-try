@@ -224,7 +224,7 @@ buildspec 保持默认值： **使用 buildspec 文件** ，以及名称留空�
 
 [comment]: <> (配置Github项目的地址，源代码管理选择Git方式。img/source-github.png 触发构建，选择 Github hook trigger for GITScm polling )
 
-修改构建步骤为新增 codebuild 步骤    
+重新新建一个 jenkins freestyle 的项目，或者修改刚才项目的构建步骤为 codebuild    
 ![](img/add-codebuild-step.png)
 
 配置 AKSK , region, project-name，其他 project source details 因为我们已经在 codebuild 当中配置过，不用填写 override 值。   
